@@ -1,0 +1,17 @@
+{{ define "main" }}
+    <div class="jumbotron">
+        <h1 class="display-3">{{ .Title }}</h1>
+
+        {{ range .Params.photos }}
+            <img src="{{ . }}" alt="...">
+        {{ end }}
+
+        <p class="lead">{{ .Params.address }}</p>
+        <p class="lead">{{ .Params.postalCode }}</p>
+        <p class="lead">{{ .Params.city }}</p>
+        <p class="lead">{{ .Params.label }}</p>
+        <p class="lead">{{ (time .Params.when).Format "02 January 2006 15:04" }}</p>
+        <p class="lead">{{ .Description }}</p>
+        <p class="lead">{{ .Params.association }}</p>
+    </div>
+{{ end }}

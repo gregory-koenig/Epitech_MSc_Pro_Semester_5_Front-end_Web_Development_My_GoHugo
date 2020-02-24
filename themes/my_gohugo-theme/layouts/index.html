@@ -1,0 +1,32 @@
+{{ define "main" }}
+    {{ $.Scratch.Set "i" 0 }}
+        {{ range sort (where .Site.RegularPages "Section" "events") ".Params.when" }}
+            <div class="jumbotron">
+                {{ if eq .Params.important true }}
+                    {{ if ne ($.Scratch.Get "i") 10 }}
+                        {{ $.Scratch.Set "i" (add ($.Scratch.Get "i") 1) }}
+
+                        {{ range .Params.photos }}
+                            <img src="{{ . }}" alt="">
+                        {{ end }}
+
+                        <h3 class="display-3"><a href="{{ .Permalink  }}">{{ .Title }}</a></h3>
+
+                        {{ if ne .Params.label "" }}
+                            <h5 class="lead">{{ .Params.label }}</h5>
+                        {{ end }}
+
+                        {{ if ne .Params.when ""}}
+                            <h5 class="lead">{{ (time .Params.when).Format "02 January 2006 15:04" }}</h5>
+                        {{ end }}
+
+                        <hr class="my-4">
+
+                        {{ if ne .Params.association "" }}
+                            <a class="btn btn-primary btn-lg" href="/associations/{{ .Params.association }}">{{ .Params.association }}</a>
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+{{ end }}

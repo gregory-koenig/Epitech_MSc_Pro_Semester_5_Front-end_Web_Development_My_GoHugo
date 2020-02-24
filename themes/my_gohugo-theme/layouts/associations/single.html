@@ -1,0 +1,9 @@
+{{ define "main" }}
+    <div class="jumbotron">
+        <h1 class="display-3">{{ .Title }}</h1>
+        <img src="{{ .Params.Photo }}" alt="...">
+        <p class="lead">{{ .Params.domain }}</p>
+        <p class="lead">{{ .Params.address }}</p>
+        <p class="lead">{{ .Description }}</p>
+    </div>
+{{ end }}
